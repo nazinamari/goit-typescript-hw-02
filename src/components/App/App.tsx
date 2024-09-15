@@ -59,11 +59,13 @@ export default function App() {
 	};
 
 	const handleModalOpen = (data: Image) => {
-		setIsModalOpen(true);
-		setSelectedImages({
-			src: data.urls.full,
-			description: data.description,
-		});
+		if (!isModalOpen) {
+			setIsModalOpen(true);
+			setSelectedImages({
+				src: data.src,
+				description: data.description,
+			});
+		}
 	};
 
 	return (
