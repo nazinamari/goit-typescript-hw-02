@@ -20,23 +20,22 @@ export default function App() {
 	);
 
 	useEffect(() => {
-		if (!searchQuery) {
-			return;
-		}
+		if (!searchQuery) return;
+
 		const getImages = async () => {
 			setisLoading(true);
 
 			try {
 				const data = await fetchData(searchQuery, page);
-				setImages((prevImages) => {
-					return [...prevImages, ...data.results];
-				});
-			} catch (error) {
+				setImages((prevImages) => [...prevImages, ...data.results]);
+				setError(false);
+			} catch {
 				setError(true);
 			} finally {
 				setisLoading(false);
 			}
 		};
+
 		getImages();
 	}, [searchQuery, page]);
 
@@ -58,7 +57,7 @@ export default function App() {
 		setIsModalOpen(false);
 	};
 
-	const handleModalOpen = (data: Image) => {
+	const handleModalOpen = (data: SelectedImage) => {
 		if (!isModalOpen) {
 			setIsModalOpen(true);
 			setSelectedImages({

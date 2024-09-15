@@ -3,7 +3,10 @@ import css from './ImageModal.module.css';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { SelectedImage } from '../App/App.types';
 
-ReactModal.setAppElement(document.getElementById('root'));
+const appElement = document.getElementById('root');
+if (appElement) {
+	ReactModal.setAppElement(appElement);
+}
 
 interface ImageModalProps {
 	isOpen: boolean;
@@ -16,7 +19,6 @@ export default function ImageModal({
 	image,
 	onClose,
 }: ImageModalProps) {
-	console.log(image.description);
 	return (
 		<ReactModal
 			isOpen={isOpen}
