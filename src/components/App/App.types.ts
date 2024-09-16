@@ -15,3 +15,9 @@ export interface SelectedImage {
 	src: string;
 	description: string;
 }
+
+export interface Data {
+	total: number;
+	total_page: number;
+	results: Image[];
+}

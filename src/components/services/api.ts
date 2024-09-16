@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Image } from '../App/App.types';
 
 axios.defaults.baseURL = 'https://api.unsplash.com/';
 
@@ -8,18 +7,12 @@ axios.defaults.params = {
 	orientation: 'landscape',
 };
 
-interface data {
-	total: number;
-	total_page: number;
-	results: Image[];
-}
-
 const API_KEY = 'TJqxy46EegWjUD1-PhaQz5Lq8osn-H0lT2S4DUn7GTM';
 
-export const fetchData = async (
+export const fetchData = async <T>(
 	searchQuery: string,
 	page: number
-): Promise<data> => {
+): Promise<T> => {
 	const response = await axios.get(
 		`/search/photos?page=${page}&query=${searchQuery}`,
 		{

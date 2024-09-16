@@ -6,7 +6,7 @@ import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.jsx';
 import ImageModal from '../ImageModal/ImageModal.jsx';
 import { Loader } from '../Loader/Loader.jsx';
 import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
-import { Image, SelectedImage } from './App.types';
+import { Image, SelectedImage, Data } from './App.types';
 
 export default function App() {
 	const [images, setImages] = useState<Image[]>([]);
@@ -26,7 +26,7 @@ export default function App() {
 			setisLoading(true);
 
 			try {
-				const data = await fetchData(searchQuery, page);
+				const data = await fetchData<Data>(searchQuery, page);
 				setImages((prevImages) => [...prevImages, ...data.results]);
 				setError(false);
 			} catch {
