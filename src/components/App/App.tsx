@@ -1,7 +1,7 @@
 import ImageGallery from '../ImageGallery/ImageGallery';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
-import { fetchData } from '../services/api.js';
+import { fetchData } from '../services/api';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.jsx';
 import ImageModal from '../ImageModal/ImageModal.jsx';
 import { Loader } from '../Loader/Loader.jsx';
